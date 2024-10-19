@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.header-bg {
+  background: linear-gradient(102.87deg, #FCEED5 6.43%, #FCEED5 78.33%, #FFE7BA 104.24%);
+}
+
+.custom-text {
+  font-family: 'SVN-Gilroy', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+}
+
+
+button:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+.custom-heading {
+  font-family: 'SVN-Gilroy', sans-serif;
+  font-weight: 700;
+}
+
+.custom-subheading {
+  font-family: 'SVN-Gilroy', sans-serif;
+  font-weight: 600;
+}
+
+.text-color{
+  color:#003459;
+}
