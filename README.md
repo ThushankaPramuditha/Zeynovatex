@@ -36,9 +36,12 @@ To get started with the project, follow these steps:
 
 1. **Clone the repository:**
    git clone https://github.com/ThushankaPramuditha/Zeynovatex.git
+   
 2. **Navigate to the project directory:**
    cd Monito
+   
 3.**Install Packages:**
    npm install
+   
 4.**Start**
    npm run dev
