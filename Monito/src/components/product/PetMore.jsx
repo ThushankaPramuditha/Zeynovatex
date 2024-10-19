@@ -1,49 +1,43 @@
-import React from 'react';
-import dog1 from  "../../assets/images/dog1.png";
-import dog2 from  "../../assets/images/dog2.png";
-import dog3 from  "../../assets/images/dog3.png";
-import dog4 from  "../../assets/images/dog4.png";
-
-
-
-const petsData = [
-  {
-    id: 'MO231',
-    name: 'Pomeranian White',
-    gene: 'Male',
-    age: '02 months',
-    price: '6.900.000 VND',
-    image: dog1,
-  },
-  {
-    id: 'MO502',
-    name: 'Poodle Tiny Yellow',
-    gene: 'Female',
-    age: '02 months',
-    price: '3.900.000 VND',
-    image: dog2,
-  },
-  {
-    id: 'MO102',
-    name: 'Poodle Tiny Sepia',
-    gene: 'Male',
-    age: '02 months',
-    price: '4.000.000 VND',
-    image: dog3,
-  },
-  {
-    id: 'MO512',
-    name: 'Alaskan Malamute Grey',
-    gene: 'Male',
-    age: '02 months',
-    price: '8.900.000 VND',
-    image: dog4,
-  },
-];
+import React, { useEffect, useState } from 'react';
+import dog1 from "../../assets/images/dog1.png";
+import dog2 from "../../assets/images/dog2.png";
+import dog3 from "../../assets/images/dog3.png";
+import dog4 from "../../assets/images/dog4.png";
 
 const PetMore = () => {
+  const [petsData, setPetsData] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
+
+  useEffect(() => {
+    const fetchPetsData = async () => {
+      try {
+        const response = await fetch('https://monitor-backend-rust.vercel.app/api/pets'); // Replace with your actual API endpoint
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setPetsData(data); 
+      } catch (error) {
+        setError(error.message); 
+      } finally {
+        setLoading(false); 
+      }
+    };
+
+    fetchPetsData(); 
+  }, []); 
+
+  if (loading) {
+    return <div>Loading...</div>; 
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
-    <div className="container mx-auto my-8 px-5 md:px-10 w-[85%]">
+    <div className="container mx-auto my-8 px-5 md:px-10 w-full max-w-screen-xl">
       {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-center w-full mb-5">
         <h2 className="custom-text text-center md:text-left text-lg md:text-2xl font-bold">
@@ -62,11 +56,11 @@ const PetMore = () => {
         {petsData.map((pet) => (
           <div
             key={pet.id}
-            className="pet-card bg-white shadow-md p-2 rounded-tl-lg h-[378px] w-[280px] md:w-[280px] md:h-[378px] flex flex-col items-center"
+            className="pet-card bg-white shadow-md p-2 rounded-tl-lg flex flex-col items-center"
             style={{ borderRadius: '12px 0px 0px 0px' }}
           >
             <img
-              src={pet.image}
+              src={pet.image || (pet.id === 'MO231' ? dog1 : pet.id === 'MO502' ? dog2 : pet.id === 'MO102' ? dog3 : dog4)} // Use fallback images if no image is provided
               alt={pet.name}
               className="w-full h-[300px] object-cover rounded-tl-lg"
             />

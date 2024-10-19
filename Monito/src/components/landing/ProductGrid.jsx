@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import productPlaceholder from  "../../assets/images/product.png"; // Placeholder image
+import productPlaceholder from  "../../assets/images/product.png"; 
 import frame49 from  "../../assets/images/Frame 49.png";
 
 const ProductGrid = () => {
-  const [productData, setProductData] = useState([]); // State to store fetched products
-  const [loading, setLoading] = useState(true); // State for loading status
-  const [error, setError] = useState(null); // State for error handling
+  const [productData, setProductData] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
 
   useEffect(() => {
     // Function to fetch product data from the API
@@ -16,23 +16,22 @@ const ProductGrid = () => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setProductData(data); // Set fetched data to state
+        setProductData(data);
       } catch (error) {
         setError(error.message); // Set error message if fetching fails
       } finally {
-        setLoading(false); // Set loading to false once data is fetched or if there's an error
+        setLoading(false); 
       }
     };
 
-    fetchProductData(); // Call the fetch function
-  }, []); // Empty dependency array means it runs once on mount
+    fetchProductData(); 
+  }, []); 
 
-  // Render loading state
+  
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  // Render error state
   if (error) {
     return <div>Error: {error}</div>;
   }
