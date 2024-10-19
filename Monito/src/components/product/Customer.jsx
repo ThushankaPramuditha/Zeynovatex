@@ -8,9 +8,9 @@ const Custumer = () => {
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const response = await fetch("https://monitor-backend-rust.vercel.app/api/customers");
+        const response = await fetch("https://monitor-backend-rust.vercel.app/api/customers"); //api endpoint for customers
         const data = await response.json();
-        setCustomers(data); // Set the customer data
+        setCustomers(data); 
       } catch (error) {
         console.error("Error fetching customer data:", error);
       }
