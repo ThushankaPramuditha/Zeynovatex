@@ -1,7 +1,7 @@
 import React from "react";
 import ImageGallery from "../product/ImageGallery";
 import PetDetailsForm from "../product/PetDetailsForm";
-import Custumer from "./customer";
+import Custumer from "./Customer";
 import PetMore from "./PetMore";
 
 const PetPage = () => {
