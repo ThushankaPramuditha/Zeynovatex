@@ -1,11 +1,12 @@
 {
-    "build": {
-      "commands": {
-        "install": "npm install"
-      }
-    },
     "builds": [
       { "src": "package.json", "use": "@vercel/node" }
-    ]
+    ],
+    "build": {
+      "commands": {
+        "install": "npm install",
+        "build": "npm run build"
+      }
+    }
   }
   
