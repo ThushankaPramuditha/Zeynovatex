@@ -46,7 +46,7 @@ const PetsGridLarge = () => {
   };
 
   if (loading) {
-    return <p>Loading pets...</p>;
+    return <p>Loading pets....</p>;
   }
 
   if (error) {
